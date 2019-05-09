@@ -44,7 +44,19 @@ class Student extends Person {
   }
 }
 
-
+class ProjectManager extends Instructor {
+  constructor (PMInfo) {
+    super(PMInfo);
+    this.gradClassName = PMInfo.gradClassName;
+    this.favInstructor = PMInfo.favInstructor;
+  }
+  standUp(channel) {
+    console.log(`${this.name} announces to ${channel}, @channel standy times!`);
+  }
+  debugsCode (studentObj, subject) {
+    console.log(`${this.name} debugs ${studentObj.name}'s code on ${subject}`);
+  }
+}
 
 
 
@@ -65,3 +77,9 @@ jayne.listsSubjects();
 jayne.PRAssignment('Classes');
 jayne.sprintChallenge('Scotland');
 
+const anthony = new ProjectManager ({name: 'Anthony', age:20, location: 'The Netherlands', gender: 'M', specialty: 'Lambda school', favLanguage: 'Dutch', catchPhrase: 'Good job', gradClassName: 'House of Lambda', favInstructor: 'Gabriel'})
+anthony.speak();
+anthony.demo('websites');
+// anthony.PRAssignment('Orange');
+anthony.standUp('Web EU2');
+anthony.debugsCode({name: 'Jayne', age: 22, location: 'UK'}, 'coding typos');
