@@ -26,6 +26,25 @@ class Instructor extends Person {
   }
 }
 
+class Student extends Person {
+  constructor(studentInfo) {
+    super(studentInfo);
+    this.previousBackground = studentInfo.previousBackground;
+    this.className = studentInfo.className;
+    this.favSubjects = studentInfo.favSubjects;
+  }
+  listsSubjects() {
+    console.log(`${this.favSubjects}`);
+  }
+  PRAssignment (subject) {
+    console.log(`${this.name} has submitted a PR for ${subject}`);
+  }
+  sprintChallenge (subject) {
+    console.log(`${this.name} has begun sprint challenge on ${subject}`);
+  }
+}
+
+
 
 
 
@@ -38,3 +57,11 @@ const gabe = new Instructor ({name: 'Gabriel', age:22, location: 'New York', gen
 gabe.speak();
 gabe.demo('debugging');
 gabe.grade({name: 'Martin', age: 23}, 'helping classmates');
+
+const jayne = new Student ({name: 'Jayne', age:23, location: 'Glasgow', gender: 'F', previousBackground: 'Singing Teacher', className: 'WEB EU2', favSubjects: ['Html', 'CSS', 'Javascript', 'Code-along sessions'],  })
+jayne.speak();
+// jayne.demo('debugging');
+jayne.listsSubjects();
+jayne.PRAssignment('Classes');
+jayne.sprintChallenge('Scotland');
+
