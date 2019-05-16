@@ -24,6 +24,9 @@ class Instructor extends Person {
   grade(student, subject) {
     console.log(`${student.name} receives a perfect score on ${subject}`);
   }
+  assessGrade(){
+    return ${student.grade} - (_Math.random_)`
+  }
 }
 
 class Student extends Person {
@@ -32,6 +35,7 @@ class Student extends Person {
     this.previousBackground = studentInfo.previousBackground;
     this.className = studentInfo.className;
     this.favSubjects = studentInfo.favSubjects;
+    this.grade = studentInfo.grade;
   }
   listsSubjects() {
     console.log(`${this.favSubjects}`);
@@ -69,8 +73,9 @@ const gabe = new Instructor ({name: 'Gabriel', age:22, location: 'New York', gen
 gabe.speak();
 gabe.demo('debugging');
 gabe.grade({name: 'Martin', age: 23}, 'helping classmates');
+gabe.assessGrade();
 
-const jayne = new Student ({name: 'Jayne', age:23, location: 'Glasgow', gender: 'F', previousBackground: 'Singing Teacher', className: 'WEB EU2', favSubjects: ['Html', 'CSS', 'Javascript', 'Code-along sessions'],  })
+const jayne = new Student ({name: 'Jayne', age:23, location: 'Glasgow', gender: 'F', previousBackground: 'Singing Teacher', className: 'WEB EU2', favSubjects: ['Html', 'CSS', 'Javascript', 'Code-along sessions'], grade: 94})
 jayne.speak();
 // jayne.demo('debugging');
 jayne.listsSubjects();
