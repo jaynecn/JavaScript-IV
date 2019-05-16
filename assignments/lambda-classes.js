@@ -24,8 +24,14 @@ class Instructor extends Person {
   grade(student, subject) {
     console.log(`${student.name} receives a perfect score on ${subject}`);
   }
-  assessGrade(){
-    return ${student.grade} - (_Math.random_)`
+  
+  assessGrade(student){
+    function getRandomInt(max) {
+      Math.floor(Math.random() * Math.floor(max));
+    }
+    let random = getRandomInt(100);
+    let myGrade = student.grade - random;
+    console.log(` ${student.name}: ${myGrade}`);
   }
 }
 
@@ -67,23 +73,25 @@ class ProjectManager extends Instructor {
 
 
 const matt = new Person ({name: 'Matt', age:42, location: 'Aberdeen', gender: 'M'});
-matt.speak();
+
 
 const gabe = new Instructor ({name: 'Gabriel', age:22, location: 'New York', gender: 'M', specialty: 'teaching', favLanguage: 'Javascript', catchPhrase: 'Propaganda'})
+
+
+const jayne = new Student ({name: 'Jayne', age:23, grade: 94, location: 'Glasgow', gender: 'F', previousBackground: 'Singing Teacher', className: 'WEB EU2', favSubjects: ['Html', 'CSS', 'Javascript', 'Code-along sessions']})
+
+
+const anthony = new ProjectManager ({name: 'Anthony', age:20, location: 'The Netherlands', gender: 'M', specialty: 'Lambda school', favLanguage: 'Dutch', catchPhrase: 'Good job', gradClassName: 'House of Lambda', favInstructor: 'Gabriel'})
+
+matt.speak();
 gabe.speak();
 gabe.demo('debugging');
 gabe.grade({name: 'Martin', age: 23}, 'helping classmates');
-gabe.assessGrade();
-
-const jayne = new Student ({name: 'Jayne', age:23, location: 'Glasgow', gender: 'F', previousBackground: 'Singing Teacher', className: 'WEB EU2', favSubjects: ['Html', 'CSS', 'Javascript', 'Code-along sessions'], grade: 94})
+gabe.assessGrade(jayne);
 jayne.speak();
-// jayne.demo('debugging');
 jayne.listsSubjects();
 jayne.PRAssignment('Classes');
-jayne.sprintChallenge('Scotland');
-
-const anthony = new ProjectManager ({name: 'Anthony', age:20, location: 'The Netherlands', gender: 'M', specialty: 'Lambda school', favLanguage: 'Dutch', catchPhrase: 'Good job', gradClassName: 'House of Lambda', favInstructor: 'Gabriel'})
-anthony.speak();
+jayne.sprintChallenge('Scotland');anthony.speak();
 anthony.demo('websites');
 // anthony.PRAssignment('Orange');
 anthony.standUp('Web EU2');
