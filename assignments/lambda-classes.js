@@ -52,6 +52,14 @@ class Student extends Person {
   sprintChallenge (subject) {
     console.log(`${this.name} has begun sprint challenge on ${subject}`);
   }
+  graduate(student) {
+    if (student.grade > 70) {
+      console.log(`Congratulations ${this.name} you can graduate Lambda School`);
+    }
+    else {
+      console.log(`You need to do more assignments to increase your score`);
+    }
+  }
 }
 
 class ProjectManager extends Instructor {
@@ -91,7 +99,9 @@ gabe.assessGrade(jayne);
 jayne.speak();
 jayne.listsSubjects();
 jayne.PRAssignment('Classes');
-jayne.sprintChallenge('Scotland');anthony.speak();
+jayne.sprintChallenge('Scotland');
+jayne.graduate(jayne);
+anthony.speak();
 anthony.demo('websites');
 // anthony.PRAssignment('Orange');
 anthony.standUp('Web EU2');
