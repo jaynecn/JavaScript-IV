@@ -7,7 +7,7 @@ class Person {
     this.gender = personInfo.gender;
   }
   speak() {
-    console.log(`Hello, my name is ${this.name} I am from ${this.location}`);
+    return `Hello, my name is ${this.name} I am from ${this.location}`;
   }
 }
 
@@ -19,10 +19,20 @@ class Instructor extends Person {
     this.catchPhrase = instructorInfo.catchPhrase;
   }
   demo(subject) {
-    console.log(`Today we are learning about ${subject}`);
+    return `Today we are learning about ${subject}`;
   }
   grade(student, subject) {
-    console.log(`${student.name} receives a perfect score on ${subject}`);
+    return `${student.name} receives a perfect score on ${subject}`;
+  }
+  
+  assessGrade(student){
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * Math.floor(max));
+    }
+    let random = getRandomInt(100);
+    console.log(random);
+    let myGrade = student.grade - random;
+    console.log(` ${student.name}: ${myGrade}`);
   }
 }
 
@@ -32,15 +42,24 @@ class Student extends Person {
     this.previousBackground = studentInfo.previousBackground;
     this.className = studentInfo.className;
     this.favSubjects = studentInfo.favSubjects;
+    this.grade = studentInfo.grade;
   }
   listsSubjects() {
-    console.log(`${this.favSubjects}`);
+    return `${this.favSubjects}`;
   }
   PRAssignment (subject) {
-    console.log(`${this.name} has submitted a PR for ${subject}`);
+    return `${this.name} has submitted a PR for ${subject}`;
   }
   sprintChallenge (subject) {
-    console.log(`${this.name} has begun sprint challenge on ${subject}`);
+    return `${this.name} has begun sprint challenge on ${subject}`;
+  }
+  graduate(student) {
+    if (student.grade > 70) {
+      return `Congratulations ${this.name} you can graduate Lambda School`;
+    }
+    else {
+      return `You need to do more assignments to increase your score`;
+    }
   }
 }
 
@@ -51,10 +70,10 @@ class ProjectManager extends Instructor {
     this.favInstructor = PMInfo.favInstructor;
   }
   standUp(channel) {
-    console.log(`${this.name} announces to ${channel}, @channel standy times!`);
+    return `${this.name} announces to ${channel}, @channel standy times!`;
   }
   debugsCode (studentObj, subject) {
-    console.log(`${this.name} debugs ${studentObj.name}'s code on ${subject}`);
+    return `${this.name} debugs ${studentObj.name}'s code on ${subject}`;
   }
 }
 
@@ -63,23 +82,28 @@ class ProjectManager extends Instructor {
 
 
 const matt = new Person ({name: 'Matt', age:42, location: 'Aberdeen', gender: 'M'});
-matt.speak();
+
 
 const gabe = new Instructor ({name: 'Gabriel', age:22, location: 'New York', gender: 'M', specialty: 'teaching', favLanguage: 'Javascript', catchPhrase: 'Propaganda'})
-gabe.speak();
-gabe.demo('debugging');
-gabe.grade({name: 'Martin', age: 23}, 'helping classmates');
 
-const jayne = new Student ({name: 'Jayne', age:23, location: 'Glasgow', gender: 'F', previousBackground: 'Singing Teacher', className: 'WEB EU2', favSubjects: ['Html', 'CSS', 'Javascript', 'Code-along sessions'],  })
-jayne.speak();
-// jayne.demo('debugging');
-jayne.listsSubjects();
-jayne.PRAssignment('Classes');
-jayne.sprintChallenge('Scotland');
+
+const jayne = new Student ({name: 'Jayne', age:23, grade: 94, location: 'Glasgow', gender: 'F', previousBackground: 'Singing Teacher', className: 'WEB EU2', favSubjects: ['Html', 'CSS', 'Javascript', 'Code-along sessions']})
+
 
 const anthony = new ProjectManager ({name: 'Anthony', age:20, location: 'The Netherlands', gender: 'M', specialty: 'Lambda school', favLanguage: 'Dutch', catchPhrase: 'Good job', gradClassName: 'House of Lambda', favInstructor: 'Gabriel'})
-anthony.speak();
-anthony.demo('websites');
+
+console.log(matt.speak());
+console.log(gabe.speak());
+console.log(gabe.demo('debugging'));
+console.log(gabe.grade({name: 'Martin', age: 23}, 'helping classmates'));
+console.log(gabe.assessGrade(jayne));
+console.log(jayne.speak());
+console.log(jayne.listsSubjects());
+console.log(jayne.PRAssignment('Classes'));
+console.log(jayne.sprintChallenge('Scotland'));
+console.log(jayne.graduate(jayne));
+console.log(anthony.speak());
+console.log(anthony.demo('websites'));
 // anthony.PRAssignment('Orange');
-anthony.standUp('Web EU2');
-anthony.debugsCode({name: 'Jayne', age: 22, location: 'UK'}, 'coding typos');
+console.log(anthony.standUp('Web EU2'));
+console.log(anthony.debugsCode({name: 'Jayne', age: 22, location: 'UK'}, 'coding typos'));

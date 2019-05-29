@@ -9,72 +9,40 @@ Prototype Refactor
 */
 
 class GameObject {
-  constructor({createdAt, name, dimensions}) {
-    this.createdAt = createdAt;
-    this.name = name;
-    this.dimensions = dimensions;
+  constructor(attributes) {
+    this.createdAt = attributes.createdAt;
+    this.name = attributes.name;
+    this.dimensions = attributes.dimensions;
   }
 
   destroy() {
     console.log(`${this.name} was removed from the game.`);
   }
 }
-// function GameObject ({createdAt, name, dimensions}) {
-//   this.createdAt = createdAt;
-//   this.name = name;
-//   this.dimensions = dimensions
-// }
-
-// GameObject.prototype.destroy = function() {
-//     console.log(`${this.name} was removed from the game.`);
-//     
 
 class CharacterStats extends GameObject {
-  constructor({createdAt, name, dimensions, healthPoints}) {
-    super({createdAt, name, dimensions, healthPoints});
-    this.healthPoints = healthPoints;
+  constructor(attributes) {
+    super(attributes);
+    this.healthPoints = attributes.healthPoints;
   }
 
   takeDamage() {
     console.log(`${this.name} took damage.`)
   }
 }
-// function CharacterStats ({createdAt, name, dimensions, healthPoints}) {
-//   GameObject.call(this, {createdAt, name, dimensions, healthPoints})
-//   this.healthPoints = healthPoints;
-// }
-
-// CharacterStats.prototype = Object.create(GameObject.prototype);
-
-// CharacterStats.prototype.takeDamage = function () {
-//   console.log(`${this.name} took damage.`)
-// }
 
 class Humanoid extends CharacterStats {
-  constructor({createdAt, name, dimensions, healthPoints, team, weapons, language}) {
-    super({createdAt, name, dimensions, healthPoints, team, weapons, language})
-    this.team = team;
-    this.weapons = weapons;
-    this.language = language;
+  constructor(attributes) {
+    super(attributes)
+    this.team = attributes.team;
+    this.weapons = attributes.weapons;
+    this.language = attributes.language;
   }
 
   greet() {
     console.log(`${this.name} offers a greeting in ${this.language}`);
   }
 }
-// function Humanoid ({createdAt, name, dimensions, healthPoints, team, weapons, language}) {
-//   console.log('thisInHumanoid', this);
-//   CharacterStats.call(this, {createdAt, name, dimensions, healthPoints, team, weapons, language})
-//   this.team = team;
-//   this.weapons = weapons;
-//   this.language = language
-// }
-
-// Humanoid.prototype = Object.create(CharacterStats.prototype);
-
-// Humanoid.prototype.greet = function () {
-//   console.log(`${this.name} offers a greeting in ${this.language}`);
-// }
 
 
 const mage = new Humanoid({
