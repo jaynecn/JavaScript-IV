@@ -77,9 +77,9 @@ jayne.listsSubjects();
 jayne.PRAssignment('Classes');
 jayne.sprintChallenge('Scotland');
 
-const anthony = new ProjectManager ({name: 'Anthony', age:20, location: 'The Netherlands', gender: 'M', specialty: 'Lambda school', favLanguage: 'Dutch', catchPhrase: 'Good job', gradClassName: 'House of Lambda', favInstructor: 'Gabriel'})
-anthony.speak();
-anthony.demo('websites');
-// anthony.PRAssignment('Orange');
-anthony.standUp('Web EU2');
-anthony.debugsCode({name: 'Jayne', age: 22, location: 'UK'}, 'coding typos');
+const ruairidh = new ProjectManager ({name: 'Ruairidh', age:21, location: 'London', gender: 'M', specialty: 'Lambda school', favLanguage: 'London', catchPhrase: 'Exemplary', gradClassName: 'House of Lambda', favInstructor: 'Gabriel'})
+ruairidh.speak();
+ruairidh.demo('websites');
+// ruairidh.PRAssignment('Orange');
+ruairidh.standUp('Web EU2');
+ruairidh.debugsCode({name: 'Jayne', age: 22, location: 'UK'}, 'coding typos');
