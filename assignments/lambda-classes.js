@@ -24,9 +24,9 @@ class Instructor extends Person {
   grade(student, subject) {
     console.log(`${student.name} receives a perfect score on ${subject}`);
   }
-  examResult(grade) {
+  examResult(student, grade) {
     let newGrade = (grade * Math.random());
-    return (`The final grade of this student is ${newGrade}`);
+    console.log(`The final grade of ${student.name} is ${newGrade}`);
   }
 }
 
@@ -36,7 +36,7 @@ class Student extends Person {
     this.previousBackground = studentInfo.previousBackground;
     this.className = studentInfo.className;
     this.favSubjects = studentInfo.favSubjects;
-    this.grade = 80;
+    this.grade = studentInfo.grade;
   }
   listsSubjects() {
     console.log(`${this.favSubjects}`);
@@ -46,6 +46,12 @@ class Student extends Person {
   }
   sprintChallenge (subject) {
     console.log(`${this.name} has begun sprint challenge on ${subject}`);
+  }
+  graduate () {
+    if(this.grade > 70) {
+      return (`Congratulations ${this.name}, you can graduate!`);
+    }
+    return (`Sorry ${this.name} you need more assignments completed to boost your score.  No graduation for you, yet...`);
   }
 }
 
@@ -75,12 +81,20 @@ gabe.speak();
 gabe.demo('debugging');
 gabe.grade({name: 'Martin', age: 23}, 'helping classmates');
 
-const jayne = new Student ({name: 'Jayne', age:21, location: 'Glasgow', gender: 'F', previousBackground: 'Singing Teacher', className: 'WEB EU2', favSubjects: ['Html', 'CSS', 'Javascript', 'Code-along sessions'],  })
+
+const jayne = new Student ({name: 'Jayne', age:21, location: 'Glasgow', grade: 80, gender: 'F', previousBackground: 'Singing Teacher', className: 'WEB EU2', favSubjects: ['Html', 'CSS', 'Javascript', 'Code-along sessions'],  })
+
+const joan = new Student ({name: 'Joan', age:19, location: 'Stirling', grade: 20, gender: 'F', previousBackground: 'Teacher', className: 'WEB EU2', favSubjects: ['Html', 'CSS', 'Javascript', 'Code-along sessions'],  })
+joan.speak();
+console.log(joan.graduate());
+gabe.examResult({name: 'Jayne', age: 21}, jayne.grade);
+
 jayne.speak();
 // jayne.demo('debugging');
 jayne.listsSubjects();
 jayne.PRAssignment('Classes');
 jayne.sprintChallenge('Scotland');
+jayne.graduate();
 
 const ruairidh = new ProjectManager ({name: 'Ruairidh', age:21, location: 'London', gender: 'M', specialty: 'Lambda school', favLanguage: 'London', catchPhrase: 'Exemplary', gradClassName: 'House of Lambda', favInstructor: 'Gabriel'})
 ruairidh.speak();
@@ -88,3 +102,5 @@ ruairidh.demo('websites');
 // ruairidh.PRAssignment('Orange');
 ruairidh.standUp('Web EU2');
 ruairidh.debugsCode({name: 'Jayne', age: 22, location: 'UK'}, 'coding typos');
+
+
